@@ -1,0 +1,256 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.valentine-card {
+  background: white;
+  border-radius: 30px;
+  padding: 50px 40px;
+  box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hearts-decoration {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.heart {
+  font-size: 2rem;
+  display: inline-block;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.heart:nth-child(1) { animation-delay: 0s; }
+.heart:nth-child(2) { animation-delay: 0.2s; }
+.heart:nth-child(3) { animation-delay: 0.4s; }
+.heart:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #ff1493;
+  margin-bottom: 30px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.2);
+}
+
+.cute-image {
+  margin: 30px 0;
+}
+
+.bear {
+  font-size: 6rem;
+  display: inline-block;
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
+
+.buttons-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 15px 40px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.yes-button {
+  background: linear-gradient(135deg, #ff6b9d 0%, #ff1493 100%);
+  color: white;
+  transform: scale(1);
+}
+
+.yes-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(255, 20, 147, 0.4);
+}
+
+.yes-button:active {
+  transform: scale(1.05);
+}
+
+.no-button {
+  background: linear-gradient(135deg, #e0e0e0 0%, #bdbdbd 100%);
+  color: #666;
+  z-index: 10;
+}
+
+.no-button:hover {
+  background: linear-gradient(135deg, #ffcccb 0%, #ffb6c1 100%);
+}
+
+.hint {
+  margin-top: 30px;
+  color: #ff69b4;
+  font-size: 1rem;
+  font-style: italic;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Success screen */
+.success-message {
+  text-align: center;
+  animation: bounceIn 0.8s ease;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.celebration {
+  font-size: 4rem;
+  margin-bottom: 30px;
+  color: #ff1493;
+}
+
+.message {
+  font-size: 2rem;
+  color: #ff69b4;
+  margin: 20px 0;
+  font-weight: 600;
+}
+
+.heart-beat {
+  font-size: 8rem;
+  margin-top: 30px;
+  animation: heartbeat 1s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.3);
+  }
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  z-index: 999;
+  animation: confetti-fall 3s linear forwards;
+}
+
+@keyframes confetti-fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .valentine-card {
+    padding: 30px 20px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .bear {
+    font-size: 4rem;
+  }
+
+  button {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+  }
+
+  .celebration {
+    font-size: 3rem;
+  }
+
+  .message {
+    font-size: 1.5rem;
+  }
+
+  .heart-beat {
+    font-size: 6rem;
+  }
+}
+
