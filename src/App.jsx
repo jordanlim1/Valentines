@@ -8,6 +8,7 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [revealedPhotos, setRevealedPhotos] = useState(new Set([0, 1, 2, 3])); // Track which photos have been revealed
   const [animatingPhoto, setAnimatingPhoto] = useState(null); // Track which photo is currently animating
+  const [fullscreenPhoto, setFullscreenPhoto] = useState(null); // Track which photo is in fullscreen
   const audioRef = useRef(null);
 
   // Array of photo paths - using your actual photos!
@@ -76,6 +77,14 @@ function App() {
         setIsPlaying(true);
       }
     }
+  };
+
+  const openFullscreen = (photoUrl) => {
+    setFullscreenPhoto(photoUrl);
+  };
+
+  const closeFullscreen = () => {
+    setFullscreenPhoto(null);
   };
 
   const handleNoHover = () => {
@@ -160,6 +169,21 @@ function App() {
           {isPlaying ? "🔊" : "🔇"}
         </button>
 
+        {/* Fullscreen photo overlay */}
+        {fullscreenPhoto && (
+          <div className="fullscreen-overlay" onClick={closeFullscreen}>
+            <button className="fullscreen-close" onClick={closeFullscreen}>
+              ✕
+            </button>
+            <img
+              src={fullscreenPhoto}
+              alt="Fullscreen"
+              className="fullscreen-image"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        )}
+
         {/* Floating photos in background */}
         <div className="floating-photos">
           {floatingPhotos.map((photo, index) => {
@@ -167,10 +191,11 @@ function App() {
             return (
               <div
                 key={index}
-                className={`floating-photo photo-${index + 1} photo-visible`}
+                className={`floating-photo photo-${index + 1} photo-visible photo-clickable`}
                 style={{
                   animationDelay: `${index * 0.5}s`,
                 }}
+                onClick={() => openFullscreen(photo)}
               >
                 <img src={photo} alt={`Memory ${index + 1}`} />
               </div>
@@ -202,6 +227,21 @@ function App() {
         {isPlaying ? "🔊" : "🔇"}
       </button>
 
+      {/* Fullscreen photo overlay */}
+      {fullscreenPhoto && (
+        <div className="fullscreen-overlay" onClick={closeFullscreen}>
+          <button className="fullscreen-close" onClick={closeFullscreen}>
+            ✕
+          </button>
+          <img
+            src={fullscreenPhoto}
+            alt="Fullscreen"
+            className="fullscreen-image"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+
       {/* Floating photos in background */}
       <div className="floating-photos">
         {floatingPhotos.map((photo, index) => {
@@ -212,10 +252,13 @@ function App() {
               key={index}
               className={`floating-photo photo-${index + 1} ${
                 isVisible ? "photo-visible" : "photo-hidden"
-              } ${isAnimating ? "photo-popping" : ""}`}
+              } ${isAnimating ? "photo-popping" : ""} ${
+                isVisible ? "photo-clickable" : ""
+              }`}
               style={{
                 animationDelay: `${index * 0.5}s`,
               }}
+              onClick={isVisible ? () => openFullscreen(photo) : undefined}
             >
               <img src={photo} alt={`Memory ${index + 1}`} />
             </div>

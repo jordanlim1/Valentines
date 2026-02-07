@@ -293,6 +293,18 @@ button {
   transition: all 0.5s ease;
 }
 
+/* Make visible photos clickable */
+.floating-photo.photo-clickable {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.floating-photo.photo-clickable:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(255, 105, 180, 0.5);
+  z-index: 2;
+}
+
 /* Hidden photos start invisible and scaled down */
 .floating-photo.photo-hidden {
   opacity: 0;
@@ -338,6 +350,74 @@ button {
     opacity: 0.9;
     transform: scale(1) rotate(0deg);
   }
+}
+
+/* Fullscreen photo lightbox */
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+  cursor: pointer;
+}
+
+.fullscreen-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: zoomIn 0.3s ease;
+  cursor: default;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.fullscreen-close {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  padding: 0;
+  line-height: 1;
+}
+
+.fullscreen-close:hover {
+  transform: scale(1.1) rotate(90deg);
+  background: #ff69b4;
+  color: white;
+}
+
+.fullscreen-close:active {
+  transform: scale(0.95);
 }
 
 .floating-photo img {
