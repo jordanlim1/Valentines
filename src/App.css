@@ -8,6 +8,37 @@
   overflow: hidden;
 }
 
+/* Music toggle button */
+.music-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #ff69b4;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10000;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.music-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.5);
+  background: #fff5f8;
+}
+
+.music-toggle:active {
+  transform: scale(0.95);
+}
+
 .valentine-card {
   background: white;
   border-radius: 30px;
@@ -259,6 +290,54 @@ button {
   animation: float-around 20s ease-in-out infinite;
   opacity: 0.9;
   z-index: 1;
+  transition: all 0.5s ease;
+}
+
+/* Hidden photos start invisible and scaled down */
+.floating-photo.photo-hidden {
+  opacity: 0;
+  transform: scale(0);
+  pointer-events: none;
+}
+
+/* Visible photos are shown but don't animate */
+.floating-photo.photo-visible {
+  opacity: 0.9;
+}
+
+/* Only photos that are currently popping in get the animation */
+.floating-photo.photo-popping {
+  animation: photo-pop-in 0.5s ease-out forwards !important;
+}
+
+/* Individual floating animations for each photo position */
+.floating-photo.photo-1 { animation: float-path-1 25s ease-in-out infinite; }
+.floating-photo.photo-2 { animation: float-path-2 30s ease-in-out infinite; }
+.floating-photo.photo-3 { animation: float-path-3 28s ease-in-out infinite; }
+.floating-photo.photo-4 { animation: float-path-4 26s ease-in-out infinite; }
+.floating-photo.photo-5 { animation: float-path-5 32s ease-in-out infinite; }
+.floating-photo.photo-6 { animation: float-path-6 29s ease-in-out infinite; }
+.floating-photo.photo-7 { animation: float-path-7 27s ease-in-out infinite; }
+.floating-photo.photo-8 { animation: float-path-8 31s ease-in-out infinite; }
+.floating-photo.photo-9 { animation: float-path-9 24s ease-in-out infinite; }
+.floating-photo.photo-10 { animation: float-path-10 33s ease-in-out infinite; }
+.floating-photo.photo-11 { animation: float-path-11 28s ease-in-out infinite; }
+.floating-photo.photo-12 { animation: float-path-12 26s ease-in-out infinite; }
+.floating-photo.photo-13 { animation: float-path-13 30s ease-in-out infinite; }
+.floating-photo.photo-14 { animation: float-path-1 27s ease-in-out infinite; }
+
+@keyframes photo-pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-15deg);
+  }
+  50% {
+    transform: scale(1.15) rotate(5deg);
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(1) rotate(0deg);
+  }
 }
 
 .floating-photo img {
@@ -269,14 +348,14 @@ button {
 
 /* Different starting positions and paths for each photo - positioned around the edges */
 .photo-1 {
-  top: 5%;
+  top: 10%;
   left: 5%;
   animation: float-path-1 25s ease-in-out infinite;
 }
 
 .photo-2 {
-  top: 65%;
-  left: 6%;
+  top: 60%;
+  left: 10%;
   animation: float-path-2 30s ease-in-out infinite;
 }
 
@@ -287,32 +366,32 @@ button {
 }
 
 .photo-4 {
-  top: 67%;
+  top: 69%;
   right: 3%;
   animation: float-path-4 26s ease-in-out infinite;
 }
 
 .photo-5 {
   top: 2%;
-  right: 15%;
+  right: 18%;
   animation: float-path-5 32s ease-in-out infinite;
 }
 
 .photo-6 {
   top: 78%;
-  left: 15%;
+  left: 20%;
   animation: float-path-6 29s ease-in-out infinite;
 }
 
 .photo-7 {
   top: 2%;
-  left: 15%;
+  left: 17%;
   animation: float-path-7 27s ease-in-out infinite;
 }
 
 .photo-8 {
   top: 45%;
-  right: 1%;
+  right: 8%;
   animation: float-path-8 31s ease-in-out infinite;
 }
 
@@ -329,7 +408,7 @@ button {
 }
 
 .photo-11 {
-  top: 82%;
+  top: 80%;
   left: 40%;
   animation: float-path-11 28s ease-in-out infinite;
 }
@@ -341,8 +420,14 @@ button {
 }
 
 .photo-13 {
-  top: 78%;
-  right: 40%;
+  top: 80%;
+  right: 35%;
+  animation: float-path-13 30s ease-in-out infinite;
+}
+
+.photo-14 {
+  top: 77%;
+  right: 88%;
   animation: float-path-13 30s ease-in-out infinite;
 }
 
