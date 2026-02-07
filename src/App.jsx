@@ -183,7 +183,7 @@ function App() {
           <p className="message">
             We're going to have an amazing Valentine's weekend! 🥰
           </p>
-          <p className="message">I love you 💕</p>
+          <p className="message">I love you todo mucho 💕</p>
           <div className="heart-beat">❤️</div>
         </div>
       </div>
