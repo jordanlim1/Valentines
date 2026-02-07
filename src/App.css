@@ -11,13 +11,14 @@
 .valentine-card {
   background: white;
   border-radius: 30px;
-  padding: 50px 40px;
+  padding: 30px 35px 15px;
   box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
   text-align: center;
-  max-width: 500px;
+  max-width: 450px;
   width: 100%;
   position: relative;
   animation: fadeIn 0.6s ease;
+  z-index: 100;
 }
 
 @keyframes fadeIn {
@@ -70,17 +71,17 @@
 .title {
   font-size: 2.5rem;
   color: #ff1493;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.2);
 }
 
 .cute-image {
-  margin: 30px 0;
+  margin: 20px 0;
 }
 
 .bear {
-  font-size: 6rem;
+  font-size: 5rem;
   display: inline-block;
   animation: wiggle 2s ease-in-out infinite;
 }
@@ -101,7 +102,7 @@
   display: flex;
   gap: 20px;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 25px;
   flex-wrap: wrap;
 }
 
@@ -120,6 +121,8 @@ button {
   background: linear-gradient(135deg, #ff6b9d 0%, #ff1493 100%);
   color: white;
   transform: scale(1);
+  position: relative;
+  z-index: 200;
 }
 
 .yes-button:hover {
@@ -134,19 +137,31 @@ button {
 .no-button {
   background: linear-gradient(135deg, #e0e0e0 0%, #bdbdbd 100%);
   color: #666;
-  z-index: 10;
+  position: relative;
 }
 
 .no-button:hover {
   background: linear-gradient(135deg, #ffcccb 0%, #ffb6c1 100%);
 }
 
+.hint-container {
+  min-height: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .hint {
-  margin-top: 30px;
+  margin: 0;
   color: #ff69b4;
   font-size: 1rem;
   font-style: italic;
   animation: fadeIn 0.5s ease;
+}
+
+.buttons-container + * {
+  min-height: 45px;
 }
 
 /* Success screen */
@@ -222,6 +237,302 @@ button {
   }
 }
 
+/* Floating Photos */
+.floating-photos {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-photo {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
+  border: 4px solid white;
+  animation: float-around 20s ease-in-out infinite;
+  opacity: 0.9;
+  z-index: 1;
+}
+
+.floating-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Different starting positions and paths for each photo - positioned around the edges */
+.photo-1 {
+  top: 5%;
+  left: 5%;
+  animation: float-path-1 25s ease-in-out infinite;
+}
+
+.photo-2 {
+  top: 65%;
+  left: 6%;
+  animation: float-path-2 30s ease-in-out infinite;
+}
+
+.photo-3 {
+  top: 15%;
+  right: 2%;
+  animation: float-path-3 28s ease-in-out infinite;
+}
+
+.photo-4 {
+  top: 67%;
+  right: 3%;
+  animation: float-path-4 26s ease-in-out infinite;
+}
+
+.photo-5 {
+  top: 2%;
+  right: 15%;
+  animation: float-path-5 32s ease-in-out infinite;
+}
+
+.photo-6 {
+  top: 78%;
+  left: 15%;
+  animation: float-path-6 29s ease-in-out infinite;
+}
+
+.photo-7 {
+  top: 2%;
+  left: 15%;
+  animation: float-path-7 27s ease-in-out infinite;
+}
+
+.photo-8 {
+  top: 45%;
+  right: 1%;
+  animation: float-path-8 31s ease-in-out infinite;
+}
+
+.photo-9 {
+  top: 80%;
+  right: 18%;
+  animation: float-path-9 24s ease-in-out infinite;
+}
+
+.photo-10 {
+  top: 35%;
+  left: 4%;
+  animation: float-path-10 33s ease-in-out infinite;
+}
+
+.photo-11 {
+  top: 82%;
+  left: 40%;
+  animation: float-path-11 28s ease-in-out infinite;
+}
+
+.photo-12 {
+  top: 2%;
+  right: 40%;
+  animation: float-path-12 26s ease-in-out infinite;
+}
+
+.photo-13 {
+  top: 78%;
+  right: 40%;
+  animation: float-path-13 30s ease-in-out infinite;
+}
+
+/* Floating animation paths - keeping photos around edges */
+@keyframes float-path-1 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(20px, 30px) rotate(5deg);
+  }
+  50% {
+    transform: translate(-15px, 50px) rotate(-3deg);
+  }
+  75% {
+    transform: translate(25px, 35px) rotate(4deg);
+  }
+}
+
+@keyframes float-path-2 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(-25px, -20px) rotate(-4deg);
+  }
+  66% {
+    transform: translate(20px, -30px) rotate(3deg);
+  }
+}
+
+@keyframes float-path-3 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-20px, 25px) rotate(-5deg);
+  }
+  50% {
+    transform: translate(15px, 45px) rotate(4deg);
+  }
+  75% {
+    transform: translate(-18px, 30px) rotate(-3deg);
+  }
+}
+
+@keyframes float-path-4 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(25px, -25px) rotate(5deg);
+  }
+  66% {
+    transform: translate(-20px, -35px) rotate(-4deg);
+  }
+}
+
+@keyframes float-path-5 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(18px, 28px) rotate(3deg);
+  }
+  50% {
+    transform: translate(-22px, 40px) rotate(-5deg);
+  }
+  75% {
+    transform: translate(15px, 25px) rotate(4deg);
+  }
+}
+
+@keyframes float-path-6 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(-18px, -22px) rotate(-3deg);
+  }
+  66% {
+    transform: translate(25px, -30px) rotate(5deg);
+  }
+}
+
+@keyframes float-path-7 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(22px, 30px) rotate(4deg);
+  }
+  50% {
+    transform: translate(-20px, 42px) rotate(-4deg);
+  }
+  75% {
+    transform: translate(18px, 28px) rotate(3deg);
+  }
+}
+
+@keyframes float-path-8 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(-20px, 25px) rotate(-5deg);
+  }
+  66% {
+    transform: translate(18px, -28px) rotate(4deg);
+  }
+}
+
+@keyframes float-path-9 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(25px, -25px) rotate(5deg);
+  }
+  50% {
+    transform: translate(-18px, -38px) rotate(-3deg);
+  }
+  75% {
+    transform: translate(22px, -30px) rotate(4deg);
+  }
+}
+
+@keyframes float-path-10 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(-18px, 32px) rotate(-4deg);
+  }
+  66% {
+    transform: translate(28px, 20px) rotate(5deg);
+  }
+}
+
+@keyframes float-path-11 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(15px, -35px) rotate(3deg);
+  }
+  50% {
+    transform: translate(-25px, -45px) rotate(-5deg);
+  }
+  75% {
+    transform: translate(20px, -30px) rotate(4deg);
+  }
+}
+
+@keyframes float-path-12 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(28px, 25px) rotate(5deg);
+  }
+  66% {
+    transform: translate(-22px, 38px) rotate(-4deg);
+  }
+}
+
+@keyframes float-path-13 {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-25px, -28px) rotate(-5deg);
+  }
+  50% {
+    transform: translate(20px, -40px) rotate(4deg);
+  }
+  75% {
+    transform: translate(-18px, -25px) rotate(-3deg);
+  }
+}
+
+.valentine-card {
+  z-index: 2;
+}
+
+.success-message {
+  z-index: 2;
+  position: relative;
+}
+
 /* Responsive design */
 @media (max-width: 600px) {
   .valentine-card {
@@ -251,6 +562,12 @@ button {
 
   .heart-beat {
     font-size: 6rem;
+  }
+
+  /* Smaller floating photos on mobile */
+  .floating-photo {
+    width: 100px;
+    height: 100px;
   }
 }
 

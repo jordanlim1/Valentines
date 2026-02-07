@@ -6,6 +6,22 @@ function App() {
   const [yesClicked, setYesClicked] = useState(false);
   const [noHoverCount, setNoHoverCount] = useState(0);
 
+  // Array of photo paths - using your actual photos!
+  const floatingPhotos = [
+    "/IMG_1389.jpg",
+    "/IMG_1681.jpg",
+    "/IMG_2087.jpg",
+    "/IMG_2160.JPG",
+    "/IMG_4321.jpg",
+    "/IMG_4760.jpg",
+    "/IMG_5022.jpg",
+    "/IMG_5393.jpg",
+    "/IMG_5562.jpg",
+    "/IMG_6651.jpg",
+    "/IMG_6829.jpg",
+    "/IMG_8466.JPG",
+  ];
+
   const noButtonTexts = [
     "No",
     "Are you sure?",
@@ -13,9 +29,10 @@ function App() {
     "Oy",
     "Last chance",
     "You'll hurt my feelings 🥺",
-    "Please?",
-    "You're done 😡",
-    "Nooo don't do this",
+    "Please? 🙂‍↔️",
+    "Chill out big back",
+    "Hit that yes rn 🫵",
+    "Yo you're done 😡",
   ];
 
   const handleNoHover = () => {
@@ -52,6 +69,21 @@ function App() {
   if (yesClicked) {
     return (
       <div className="container">
+        {/* Floating photos in background */}
+        <div className="floating-photos">
+          {floatingPhotos.map((photo, index) => (
+            <div
+              key={index}
+              className={`floating-photo photo-${index + 1}`}
+              style={{
+                animationDelay: `${index * 0.5}s`,
+              }}
+            >
+              <img src={photo} alt={`Memory ${index + 1}`} />
+            </div>
+          ))}
+        </div>
+
         <div className="success-message">
           <h1 className="celebration">🎉 YAY! 🎉</h1>
           <p className="message">
@@ -66,6 +98,21 @@ function App() {
 
   return (
     <div className="container">
+      {/* Floating photos in background */}
+      <div className="floating-photos">
+        {floatingPhotos.map((photo, index) => (
+          <div
+            key={index}
+            className={`floating-photo photo-${index + 1}`}
+            style={{
+              animationDelay: `${index * 0.5}s`,
+            }}
+          >
+            <img src={photo} alt={`Memory ${index + 1}`} />
+          </div>
+        ))}
+      </div>
+
       <div className="valentine-card">
         <div className="hearts-decoration">
           <span className="heart">💕</span>
@@ -94,17 +141,20 @@ function App() {
               left: noHoverCount > 0 ? `${noButtonPosition.x}px` : "auto",
               top: noHoverCount > 0 ? `${noButtonPosition.y}px` : "auto",
               transition: "all 0.3s ease",
+              zIndex: noHoverCount > 0 ? 9999 : 100,
             }}
           >
             {noButtonTexts[noHoverCount]}
           </button>
         </div>
 
-        {noHoverCount > 3 && (
-          <p className="hint">
-            The "No" button is being shy... maybe that's a sign? 😊
-          </p>
-        )}
+        <div className="hint-container">
+          {noHoverCount > 3 && (
+            <p className="hint">
+              The "No" button is being a lil shy... 😊
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );
