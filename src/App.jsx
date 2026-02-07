@@ -7,19 +7,21 @@ function App() {
   const [noHoverCount, setNoHoverCount] = useState(0);
 
   // Array of photo paths - using your actual photos!
+  // Using base URL to work with GitHub Pages
+  const baseUrl = import.meta.env.BASE_URL;
   const floatingPhotos = [
-    "/IMG_1389.jpg",
-    "/IMG_1681.jpg",
-    "/IMG_2087.jpg",
-    "/IMG_2160.JPG",
-    "/IMG_4321.jpg",
-    "/IMG_4760.jpg",
-    "/IMG_5022.jpg",
-    "/IMG_5393.jpg",
-    "/IMG_5562.jpg",
-    "/IMG_6651.jpg",
-    "/IMG_6829.jpg",
-    "/IMG_8466.JPG",
+    `${baseUrl}IMG_1389.jpg`,
+    `${baseUrl}IMG_1681.jpg`,
+    `${baseUrl}IMG_2087.jpg`,
+    `${baseUrl}IMG_2160.JPG`,
+    `${baseUrl}IMG_4321.jpg`,
+    `${baseUrl}IMG_4760.jpg`,
+    `${baseUrl}IMG_5022.jpg`,
+    `${baseUrl}IMG_5393.jpg`,
+    `${baseUrl}IMG_5562.jpg`,
+    `${baseUrl}IMG_6651.jpg`,
+    `${baseUrl}IMG_6829.jpg`,
+    `${baseUrl}IMG_8466.JPG`,
   ];
 
   const noButtonTexts = [
