@@ -39,25 +39,6 @@ npm run build
 npm run deploy
 ```
 
-## How to Push to GitHub
-
-Since this repo requires authentication, make sure you have:
-
-1. Set up your Git credentials:
-```bash
-git config user.name "jordanlim1"
-git config user.email "jordanlim2015@gmail.com"
-```
-
-2. Push using one of these methods:
-   - Use SSH (recommended): Change remote to `git@github.com:jordanlim1/Valentines.git`
-   - Use Personal Access Token instead of password
-   - Clear cached credentials and re-authenticate
-
-3. Enable GitHub Pages in repository settings:
-   - Go to Settings → Pages
-   - Source: GitHub Actions
-
 ## Tech Stack
 
 - ⚛️ React 18
