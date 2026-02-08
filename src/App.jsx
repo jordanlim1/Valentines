@@ -204,7 +204,7 @@ function App() {
         </div>
 
         <div className="success-message">
-          <h1 className="celebration">🎉 YAY! 🎉</h1>
+          <h1 className="celebration">💐 YAY! 💐</h1>
           <p className="message">
             We're going to have an amazing Valentine's weekend! 🥰
           </p>
